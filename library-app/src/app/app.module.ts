@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'login',
+  loadChildren: () => import('src/app/pages/login/login.module').then(m => m.LoginModule) },
+  { path: '',
   loadChildren: () => import('src/app/pages/login/login.module').then(m => m.LoginModule) },
   { path: 'my-books',
   loadChildren: () => import('src/app/pages/my-books/my-books.module').then(m => m.MyBooksModule) },
@@ -40,7 +43,9 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,RouterModule.forRoot(routes),
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule, 
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
