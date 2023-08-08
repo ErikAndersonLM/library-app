@@ -1,1 +1,35 @@
-<p>register-user works!</p>
+<div class="container">
+    <div class="register">
+        <form class="row g-3" [formGroup]="formRegisterUser" >
+
+            <div class="text-center">
+                <h2>Cadastrar-se</h2>
+            </div>
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="name" formControlName="name">
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="email" formControlName="email">
+              </div>
+
+              <div class="mb-3">
+                <label for="password" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="password" formControlName="password">
+              </div>
+
+              <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirmar Senha</label>
+                <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
+              </div>
+
+              <div class="btn-login text-center">
+                  <button type="button" [disabled]="!formRegisterUser.valid" class="btn btn-primary">Cadastrar</button>
+              </div>
+
+        </form>
+    </div>
+</div>

@@ -1,26 +1,26 @@
 <div class="container">
-    <div class="login">
-        <form class="row g-3" [formGroup]="formLogin">
-            <div class="mb-3">
-                <label for="login" class="form-label">Login</label>
-                <input type="email" class="form-control" id="login" placeholder="meuemail@email.com" formControlName="login">
-              </div>
+  <div class="login">
+    <form class="row g-3" [formGroup]="formLogin">
+      <div class="mb-3">
+        <label for="login" class="form-label">Login</label>
+        <input type="email" class="form-control" id="login" placeholder="meuemail@email.com" formControlName="login">
+      </div>
 
-              <div class="mb-3">
-                <label for="password" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="password" formControlName="password">
-                <div style="width: 100%;" class="text-end mt-2">
-                  <a class="form-text" [routerLink]="'/register-user'">
-                    Ainda não tenho uma conta
-                  </a>
-                </div>
-              </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="password" formControlName="password">
+        <div style="width: 100%;" class="text-end mt-2">
+          <a class="form-text" [routerLink]="'/register-user'">
+            Ainda não tenho uma conta
+          </a>
+        </div>
+      </div>
 
-              <div class="btn-login text-center">
-                <a [routerLink]="'/my-books'">
-                  <button type="button" class="btn btn-primary">Acessar</button>
-                </a>
-              </div>
-        </form>
-    </div>
+      <div class="btn-login text-center">
+        <a [routerLink]="'/my-books'">
+          <button type="button" class="btn btn-primary">Acessar</button>
+        </a>
+      </div>
+    </form>
+  </div>
 </div>
