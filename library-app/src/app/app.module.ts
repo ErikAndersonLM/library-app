@@ -10,6 +10,7 @@ import { RegisterAuthorComponent } from './pages/register-author/register-author
 import { LoginComponent } from './pages/login/login.component';
 import { MyBooksComponent } from './pages/my-books/my-books.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { RegisterUserComponent } from './pages/register-user/register-user.component';
 
 
 
@@ -22,6 +23,8 @@ const routes: Routes = [
   loadChildren: () => import('src/app/pages/my-books/my-books.module').then(m => m.MyBooksModule) },
   { path: 'register-author',
   loadChildren: () => import('src/app/pages/register-author/register-author.module').then(m => m.RegisterAuthorModule) },
+  { path: 'register-user',
+  loadChildren: () => import('src/app/pages/register-user/register-user.module').then(m => m.RegisterUserModule) },
   { path: 'register-book',
   loadChildren: () => import('src/app/pages/register-book/register-book.module').then(m => m.RegisterBookModule) },
   { path: '**',
@@ -38,7 +41,8 @@ const routes: Routes = [
     RegisterAuthorComponent,
     LoginComponent,
     MyBooksComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,
