@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-register-author',
@@ -7,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterAuthorComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _formBuilder: FormBuilder
+  ) { }
+
+  formAuthor_Register!: FormGroup;
 
   ngOnInit(): void {
-    console.log("teste git.");
+    this.formAuthor_Register = this._formBuilder.group({
+      name: ['', [Validators.required]],
+      date_of_birth: ['', [Validators.required]],
+      nationality: ['', [Validators.required]]
+    })
   }
 
 }

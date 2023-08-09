@@ -1,1 +1,40 @@
-<p>register-book works!</p>
+<div class="container">
+    <form class="row g-3 register" [formGroup]="formBook_Register">
+        <div class="title">
+            <h3>Cadastrar Livro</h3>
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Título</label>
+          <input type="text" class="form-control" id="name" formControlName="name">
+        </div>
+  
+        <div class="mb-3">
+            <label for="gender" class="form-label">Gênero</label>
+            <input type="text" class="form-control" id="gender" formControlName="gender">
+        </div>
+        
+        <div class="mb-3">
+            <label for="language" class="form-label">Idioma</label>
+            <input type="text" class="form-control" id="language" formControlName="language">
+        </div>  
+
+        <div class="mb-3">
+            <label for="release_year" class="form-label">Ano de Lançamento</label>
+            <input type="number" class="form-control" id="release_year" formControlName="release_year">
+        </div>
+
+        <div class="mb-3">
+            <label for="synopsis" class="form-label">Sinopse</label>
+            <textarea class="form-control" id="synopsis" formControlName="synopsis" rows="4"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="book_author" class="form-label">Autor</label>
+            <input type="text" class="form-control" id="book_author" formControlName="book_author">
+          </div>
+  
+        <div class="btn-login text-center">
+            <button type="button" class="btn btn-primary" [disabled]="formBook_Register.invalid" >Cadastrar</button>
+        </div>
+      </form>
+</div>

@@ -1,1 +1,25 @@
-<p>register-author works!</p>
+<div class="container">
+    <form class="row g-3 register" [formGroup]="formAuthor_Register">
+        <div class="title">
+            <h3>Cadastrar Autor</h3>
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="name" formControlName="name">
+        </div>
+  
+        <div class="mb-3">
+          <label for="date_of_birth" class="form-label">Data de Nascimento</label>
+          <input type="date" class="form-control" id="date_of_birth" formControlName="date_of_birth">
+        </div>
+
+        <div class="mb-3">
+            <label for="nationality" class="form-label">Nacionalidade</label>
+            <input type="text" class="form-control" id="nationality" formControlName="nationality">
+          </div>
+  
+        <div class="btn-login text-center">
+            <button type="button" class="btn btn-primary" [disabled]="formAuthor_Register.invalid">Cadastrar</button>
+        </div>
+      </form>
+</div>
