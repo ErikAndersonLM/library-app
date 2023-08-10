@@ -1,11 +1,12 @@
-import { Injectable } from '@nestjs/common';
-import { CreateBookDto } from './dto/create-book.dto';
-import { UpdateBookDto } from './dto/update-book.dto';
+import { Injectable, Inject, CACHE_MANAGER } from '@nestjs/common';
+import { Cache } from 'cache-manager';
 
 @Injectable()
 export class BookService {
-  create(createBookDto: CreateBookDto) {
-    console.log(createBookDto);
+  constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache) {}
+
+  create() {
+    this.cacheManager.set('1', { book: 'Book Name' });
     return 'This action adds a new book';
   }
 
@@ -13,12 +14,15 @@ export class BookService {
     return `This action returns all book`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} book`;
+  findOne(id: string) {
+    const resultCache = this.cacheManager.get(id);
+    if(resultCache) {
+      return resultCache;
+    }
+    return `This book key not exist on Redis.`;
   }
 
-  update(id: number, updateBookDto: UpdateBookDto) {
-    console.log(updateBookDto);
+  update(id: number) {
     return `This action updates a #${id} book`;
   }
 
