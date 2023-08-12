@@ -1,17 +1,24 @@
 import { Injectable, Inject, CACHE_MANAGER } from '@nestjs/common';
-import { Cache } from 'cache-manager';
+import { Cache} from 'cache-manager';
+import { v4 as uuidv4 } from 'uuid';
+import { Book } from 'src/book/entities/book.entity';
+
 
 @Injectable()
+
 export class BookService {
   constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache) {}
 
-  create() {
-    this.cacheManager.set('1', { book: 'Book Name' });
+  create(book: Book) {
+    this.cacheManager.set("book-".concat(uuidv4()), book);
+    
     return 'This action adds a new book';
   }
 
   findAll() {
-    return `This action returns all book`;
+    console.log("chegou aq");
+    const result = this.cacheManager.get("book-all");
+    return result;
   }
 
   findOne(id: string) {

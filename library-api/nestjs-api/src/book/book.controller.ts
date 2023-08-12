@@ -8,14 +8,19 @@ import {
   Delete,
 } from '@nestjs/common';
 import { BookService } from './book.service';
+import { Book } from 'src/book/entities/book.entity';
+
+
 @Controller('book')
+
+
 export class BookController {
   constructor(private readonly bookService: BookService) {}
 
   @Post()
-  create() {
-    console.log("Chegou aqui");
-    return this.bookService.create();
+  create(@Body() book: Book) {
+    console.log("Chegou aqui -> ", book);
+    return this.bookService.create(book);
   }
 
   @Get()

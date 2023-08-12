@@ -5,16 +5,21 @@ import {
   Patch,
   Param,
   Delete,
+  Body,
 } from '@nestjs/common';
 import { AuthorService } from './author.service';
+import { Author } from './entities/author.entity';
 
 @Controller('author')
+
+
 export class AuthorController {
   constructor(private readonly authorService: AuthorService) {}
 
   @Post()
-  create() {
-    return this.authorService.create();
+  create(@Body() author: Author) {
+    console.log("Author chegou aqui -> ", author);
+    return this.authorService.create(author);
   }
 
   @Get()

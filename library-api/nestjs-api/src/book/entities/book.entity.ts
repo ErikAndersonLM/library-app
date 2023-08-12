@@ -1,1 +1,8 @@
-export class Book {}
+export class Book {
+    title: string
+    gender: string
+    language: string
+    release_year: Date
+    synopsis: string
+    author: string
+}

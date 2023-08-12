@@ -5,15 +5,19 @@ import {
   Patch,
   Param,
   Delete,
+  Body,
 } from '@nestjs/common';
 import { UserService } from './user.service';
+import { User } from './entities/user.entity';
+
 
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  create() {
+  create(@Body() user: User) {
+    console.log("User chegou aqui -> ", user);
     return this.userService.create();
   }
 
