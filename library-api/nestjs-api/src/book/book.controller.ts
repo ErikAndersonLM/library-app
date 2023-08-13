@@ -5,22 +5,22 @@ import {
   Body,
   Patch,
   Param,
+  Res,
   Delete,
+  HttpStatus
 } from '@nestjs/common';
 import { BookService } from './book.service';
 import { Book } from 'src/book/entities/book.entity';
-
+import { Response } from 'express';
 
 @Controller('book')
-
-
 export class BookController {
   constructor(private readonly bookService: BookService) {}
 
   @Post()
-  create(@Body() book: Book) {
-    console.log("Chegou aqui -> ", book);
-    return this.bookService.create(book);
+  create(@Body() book: Book, @Res() response: Response) {
+    console.log("Livro chegou aqui -> ", book);
+    return response.status(HttpStatus.OK).send(this.bookService.create(book));
   }
 
   @Get()

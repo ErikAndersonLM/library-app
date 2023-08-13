@@ -6,20 +6,21 @@ import {
   Param,
   Delete,
   Body,
+  Res,
+  HttpStatus
 } from '@nestjs/common';
 import { AuthorService } from './author.service';
 import { Author } from './entities/author.entity';
+import { Response } from 'express';
 
 @Controller('author')
-
-
 export class AuthorController {
   constructor(private readonly authorService: AuthorService) {}
 
   @Post()
-  create(@Body() author: Author) {
+  create(@Body() author: Author, @Res() response: Response) {
     console.log("Author chegou aqui -> ", author);
-    return this.authorService.create(author);
+    return response.status(HttpStatus.OK).send(this.authorService.create(author));
   }
 
   @Get()

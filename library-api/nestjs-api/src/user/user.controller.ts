@@ -4,11 +4,14 @@ import {
   Post,
   Patch,
   Param,
+  Res,
+  HttpStatus,
   Delete,
   Body,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './entities/user.entity';
+import { Response } from 'express';
 
 
 @Controller('user')
@@ -16,9 +19,9 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  create(@Body() user: User) {
-    console.log("User chegou aqui -> ", user);
-    return this.userService.create();
+  create(@Body() user: User, @Res() response: Response) {
+    console.log("Usuário chegou aqui -> ", user);
+    return response.status(HttpStatus.OK).send(this.userService.create(user));
   }
 
   @Get()

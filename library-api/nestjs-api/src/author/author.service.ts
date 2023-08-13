@@ -12,7 +12,7 @@ export class AuthorService {
 
   create(author:Author) {
     this.cacheManager.set("author-".concat(uuidv4()), author);
-    return 'This action adds a new author';
+    return {success: true, message: "Author created with succesfully."};
   }
 
   findAll() {

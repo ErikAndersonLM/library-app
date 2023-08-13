@@ -11,8 +11,7 @@ export class BookService {
 
   create(book: Book) {
     this.cacheManager.set("book-".concat(uuidv4()), book);
-    
-    return 'This action adds a new book';
+    return {success: true, message: "Livro criado com sucesso"};
   }
 
   findAll() {
