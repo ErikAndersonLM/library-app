@@ -21,13 +21,8 @@
                 <input type="password" class="form-control" id="password" formControlName="password">
               </div>
 
-              <div class="mb-3">
-                <label for="confirmPassword" class="form-label">Confirmar Senha</label>
-                <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
-              </div>
-
               <div class="btn-login text-center">
-                  <button type="button" [disabled]="!formRegisterUser.valid" class="btn btn-primary">Cadastrar</button>
+                  <button type="button" [disabled]="!formRegisterUser.valid" class="btn btn-primary" (click)="register()" >Cadastrar</button>
               </div>
 
         </form>
