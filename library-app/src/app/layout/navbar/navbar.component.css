@@ -1,0 +1,31 @@
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0;
+}
+
+.menu-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-items li {
+    list-style: none;
+    margin-left: 10px;
+}
+
+.menu-items li a {
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+}
+
+.btn-logout {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    width: 60px;
+}

@@ -11,6 +11,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { MyBooksComponent } from './pages/my-books/my-books.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterUserComponent } from './pages/register-user/register-user.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
 
 
 
@@ -42,7 +43,8 @@ const routes: Routes = [
     LoginComponent,
     MyBooksComponent,
     NotFoundComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
