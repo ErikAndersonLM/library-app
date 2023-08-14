@@ -17,38 +17,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="text-center">
-                        <th scope="row">1</th>
-                        <td>Ela e eu</td>
-                        <td>Breno</td>
-                        <td>Romance</td>
-                        <td>2012</td>
-                        <td class="text-center">
-                            <input type="checkbox">
-                        </td>
-                        <td class="text-center">
-                            <input type="checkbox">
-                        </td>
-                    </tr>
-                    <tr class="text-center">
-                        <th scope="row">2</th>
-                        <td>Carro parado</td>
-                        <td>Guilherme</td>
-                        <td>Drama</td>
-                        <td>1994</td>
-                        <td class="text-center">
-                            <input type="checkbox">
-                        </td>
-                        <td class="text-center">
-                            <input type="checkbox">
-                        </td>
-                    </tr>
-                    <tr class="text-center">
-                        <th scope="row">3</th>
-                        <td>O cachorro amarelo</td>
-                        <td>Erik</td>
-                        <td>Comédia</td>
-                        <td>2019</td>
+                    <tr class="text-center" *ngFor="let book of list; let i = index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{book.title}}</td>
+                        <td>{{book.author}}</td>
+                        <td>{{book.gender}}</td>
+                        <td>{{book.release_year}}</td>
                         <td class="text-center">
                             <input type="checkbox">
                         </td>

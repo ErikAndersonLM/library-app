@@ -37,4 +37,22 @@ export class BookService {
     });
   }
 
+  getAllBooks() {
+    return new Promise((resolve, reject) => {
+      const query = UtilService.API_BASE_URL + '/book';
+      this.http.get(
+        query
+      )
+        .pipe(
+          map((res: any) => {
+            return res;
+          })
+        ).subscribe(books => {
+          resolve(books);
+        }, err => {
+          reject(err);
+        });
+    });
+  }
+
 }
