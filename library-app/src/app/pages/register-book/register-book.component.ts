@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule, FormGroup, MaxLengthValidator } from '@angular/forms';
 import { Book } from 'src/app/model/book';
 import { BookService } from 'src/app/services/book.service';
+import { Author } from 'src/app/model/author';
+import { AuthorService } from 'src/app/services/author.service';
 
 @Component({
   selector: 'app-register-book',
@@ -12,12 +14,22 @@ export class RegisterBookComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private bookService: BookService
+    private bookService: BookService,
+    private authorService: AuthorService
   ) { }
 
   formBook_Register!: FormGroup;
 
+  public list: Author[] = [];
+
   ngOnInit(): void {
+
+    this.authorService.getAllAuthors().then(result => {
+      this.list = result as Author[];
+      console.log(this.list);
+  }).catch(e => {
+    console.error(e);
+  }) 
 
     this.formBook_Register = this._formBuilder.group({
       title: ['', [Validators.required]],

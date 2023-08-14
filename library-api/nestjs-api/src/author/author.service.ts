@@ -15,8 +15,11 @@ export class AuthorService {
     return {success: true, message: "Author created with succesfully."};
   }
 
-  findAll() {
-    return `This action returns all author`;
+  async findAll() {11
+    const allKeys:string[] = await this.cacheManager.store.keys() as string[];
+    const authorKeys = await allKeys.filter(item => item.includes("author"));
+    const authorInformations = await Promise.all(authorKeys.map(key => this.cacheManager.get(key)));
+    return authorInformations;
   }
 
   findOne(id: number) {
