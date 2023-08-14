@@ -19,7 +19,6 @@ export class AuthorController {
 
   @Post()
   create(@Body() author: Author, @Res() response: Response) {
-    console.log("Author chegou aqui -> ", author);
     return response.status(HttpStatus.OK).send(this.authorService.create(author));
   }
 

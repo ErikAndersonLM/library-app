@@ -18,7 +18,7 @@ export class AuthorService {
   }
 
   createAuthor(author: Author) {
-    console.log(author);
+
     return new Promise((resolve, reject) => {
       const query = UtilService.API_BASE_URL + '/author';
       this.http.post(

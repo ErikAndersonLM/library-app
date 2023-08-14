@@ -1,5 +1,5 @@
 export class Author {
     name: string
-    date_of_birth: Date
+    dateOfBirth: Date
     nationality: string
 }

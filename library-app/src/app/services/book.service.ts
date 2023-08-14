@@ -18,7 +18,6 @@ export class BookService {
   }
 
   createBook(book: Book) {
-    console.log(book);
     return new Promise((resolve, reject) => {
       const query = UtilService.API_BASE_URL + '/book';
       this.http.post(

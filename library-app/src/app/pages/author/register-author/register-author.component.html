@@ -1,5 +1,5 @@
 <div class="container">
-    <form class="row g-3 register" [formGroup]="formAuthor_Register">
+    <form class="row g-3 register" [formGroup]="formAuthorRegister">
         <div class="title">
             <h3>Cadastrar Autor</h3>
         </div>
@@ -9,8 +9,8 @@
         </div>
   
         <div class="mb-3">
-          <label for="date_of_birth" class="form-label">Data de Nascimento</label>
-          <input type="date" class="form-control" id="date_of_birth" formControlName="date_of_birth">
+          <label for="dateOfBirth" class="form-label">Data de Nascimento</label>
+          <input type="date" class="form-control" id="dateOfBirth" formControlName="dateOfBirth">
         </div>
 
         <div class="mb-3">
@@ -19,7 +19,7 @@
           </div>
   
         <div class="btn-login text-center">
-            <button type="button" class="btn btn-primary" [disabled]="formAuthor_Register.invalid" (click)="register()">Cadastrar</button>
+            <button type="button" class="btn btn-primary" [disabled]="formAuthorRegister.invalid" (click)="register()">Cadastrar</button>
         </div>
       </form>
 </div>

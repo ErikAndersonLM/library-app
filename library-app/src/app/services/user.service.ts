@@ -22,7 +22,6 @@ export class UserService {
   isLoggedIn = this.isLoggedInSubject.asObservable();
 
   createUser(user: User) {
-    console.log(user);
     return new Promise((resolve, reject) => {
       const query = UtilService.API_BASE_URL + '/user';
       this.http.post(

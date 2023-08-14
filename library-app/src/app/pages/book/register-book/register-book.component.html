@@ -1,5 +1,5 @@
 <div class="container">
-    <form class="row g-3 register" [formGroup]="formBook_Register">
+    <form class="row g-3 register" [formGroup]="formBookRegister">
         <div class="title">
             <h3>Cadastrar Livro</h3>
         </div>
@@ -37,7 +37,7 @@
         </div>
 
         <div class="btn-login text-center">
-            <button type="button" class="btn btn-primary" [disabled]="formBook_Register.invalid"
+            <button type="button" class="btn btn-primary" [disabled]="formBookRegister.invalid"
                 (click)="register()">Cadastrar</button>
         </div>
     </form>

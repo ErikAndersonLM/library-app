@@ -18,7 +18,7 @@ export class RegisterBookComponent implements OnInit {
     private authorService: AuthorService
   ) { }
 
-  formBook_Register!: FormGroup;
+  formBookRegister!: FormGroup;
 
   public list: Author[] = [];
 
@@ -26,12 +26,11 @@ export class RegisterBookComponent implements OnInit {
 
     this.authorService.getAllAuthors().then(result => {
       this.list = result as Author[];
-      console.log(this.list);
   }).catch(e => {
     console.error(e);
   }) 
 
-    this.formBook_Register = this._formBuilder.group({
+    this.formBookRegister = this._formBuilder.group({
       title: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       language: ['', [Validators.required]],
@@ -43,12 +42,12 @@ export class RegisterBookComponent implements OnInit {
 
   async register(){
     const book = {
-      title: this.formBook_Register.get("title")?.value,
-      gender: this.formBook_Register.get("gender")?.value,
-      language: this.formBook_Register.get("language")?.value,
-      release_year: this.formBook_Register.get("release_year")?.value,
-      synopsis: this.formBook_Register.get("synopsis")?.value,
-      author: this.formBook_Register.get("book_author")?.value
+      title: this.formBookRegister.get("title")?.value,
+      gender: this.formBookRegister.get("gender")?.value,
+      language: this.formBookRegister.get("language")?.value,
+      release_year: this.formBookRegister.get("release_year")?.value,
+      synopsis: this.formBookRegister.get("synopsis")?.value,
+      author: this.formBookRegister.get("book_author")?.value
     } as Book;
     
     const response:any = await this.bookService.createBook(book);

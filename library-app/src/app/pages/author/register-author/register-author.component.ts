@@ -11,25 +11,25 @@ import { AuthorService } from 'src/app/services/author.service';
 export class RegisterAuthorComponent implements OnInit {
 
   constructor(
-    private _formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private authorService: AuthorService
   ) { }
 
-  formAuthor_Register!: FormGroup;
+  formAuthorRegister!: FormGroup;
 
   ngOnInit(): void {
-    this.formAuthor_Register = this._formBuilder.group({
+    this.formAuthorRegister = this.formBuilder.group({
       name: ['', [Validators.required]],
-      date_of_birth: ['', [Validators.required]],
+      dateOfBirth: ['', [Validators.required]],
       nationality: ['', [Validators.required]]
     })
   }
 
   async register(){
     const author = {
-      name: this.formAuthor_Register.get("name")?.value,
-      date_of_birth: this.formAuthor_Register.get("date_of_birth")?.value,
-      nationality: this.formAuthor_Register.get("nationality")?.value
+      name: this.formAuthorRegister.get("name")?.value,
+      dateOfBirth: this.formAuthorRegister.get("dateOfBirth")?.value,
+      nationality: this.formAuthorRegister.get("nationality")?.value
     } as Author;
     
     const response:any = await this.authorService.createAuthor(author);

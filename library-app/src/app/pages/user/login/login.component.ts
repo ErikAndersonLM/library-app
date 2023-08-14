@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginComponent implements OnInit {
  
   constructor(
-    private _formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router
     ) { }
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     
   ngOnInit(): void {
 
-    this.formLogin = this._formBuilder.group({
+    this.formLogin = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
     })
@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
     } as User;
 
     const response:any = await this.userService.verifyUser(user);
-    console.log(response);
     if(response.success){
       this.router.navigate(['/my-books'])
     } else {

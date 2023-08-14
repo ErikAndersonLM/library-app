@@ -19,7 +19,6 @@ export class BookController {
 
   @Post()
   create(@Body() book: Book, @Res() response: Response) {
-    console.log("Livro chegou aqui -> ", book);
     return response.status(HttpStatus.OK).send(this.bookService.create(book));
   }
 

@@ -18,8 +18,6 @@ export class NavbarComponent implements OnInit {
     this.userService.isLoggedIn.subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;       
     });
-
-    console.log("navbar logged -> ", this.isLoggedIn);
   }
 
 

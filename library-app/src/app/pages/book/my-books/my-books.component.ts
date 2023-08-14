@@ -18,7 +18,6 @@ export class MyBooksComponent implements OnInit {
   ngOnInit(): void {
     this.bookService.getAllBooks().then(result => {
         this.list = result as Book[];
-        console.log(this.list);
     }).catch(e => {
       console.error(e);
     }) 
@@ -26,7 +25,6 @@ export class MyBooksComponent implements OnInit {
 
   bookSaved(book: Book, event:any){
     const checked: boolean = event.srcElement.checked;
-    console.log(checked);
     if(checked) {
       this.savedFilteredList.push(book);
     } else {
@@ -36,7 +34,6 @@ export class MyBooksComponent implements OnInit {
 
   bookReaded(book: Book, event:any){
     const checked: boolean = event.srcElement.checked;
-    console.log(checked);
     if(checked) {
       this.readedFilteredList.push(book);
     } else {

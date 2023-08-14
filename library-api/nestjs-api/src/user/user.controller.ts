@@ -20,16 +20,12 @@ export class UserController {
 
   @Post()
   create(@Body() user: User, @Res() response: Response) {
-    console.log("Usuário chegou aqui -> ", user);
     return response.status(HttpStatus.OK).send(this.userService.create(user));
   }
 
   @Post('authenticate')
   async verifyLogin(@Body() user: User, @Res() response:Response){
-    console.log('chegou aquio no controler bastantxi',user);
     const result = await this.userService.verifyLogin(user);
-    
-    console.log(result);
     return response.status(HttpStatus.OK).send(result);
   }
 
