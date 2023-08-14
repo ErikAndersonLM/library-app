@@ -1,15 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class NavbarComponent implements OnInit {
+  
+  isLoggedIn:boolean = false;
+  
+  constructor(private userService: UserService) {}
 
-  constructor() { }
 
   ngOnInit(): void {
+    this.userService.isLoggedIn.subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;       
+    });
+
+    console.log("navbar logged -> ", this.isLoggedIn);
+  }
+
+
+  logout() {
+    this.userService.logout();
   }
 
 }

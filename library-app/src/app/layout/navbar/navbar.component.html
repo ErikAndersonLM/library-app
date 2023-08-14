@@ -1,4 +1,4 @@
-<nav class="navbar bg-body-tertiary">
+<nav class="navbar bg-body-tertiary" *ngIf="isLoggedIn">
     <div class="container-fluid">
         <div>
             <span class="navbar-brand mb-0 h1">Biblioteca</span>
@@ -21,7 +21,7 @@
                     </a>
                 </li>
             </ul>
-            <button class="mx-2 btn-logout">Sair</button>
+            <button class="mx-2 btn-logout" (click)="logout()" >Sair</button>
         </div>
     </div>
 </nav>

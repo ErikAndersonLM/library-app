@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-user',
@@ -12,7 +13,8 @@ export class RegisterUserComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   formRegisterUser!: FormGroup;
@@ -37,6 +39,7 @@ export class RegisterUserComponent implements OnInit {
     const response:any = await this.userService.createUser(user);
     if(response.success){
       alert("Usuário cadastrado com sucesso!");
+      this.router.navigate(['/my-books'])
     }
   
   }
