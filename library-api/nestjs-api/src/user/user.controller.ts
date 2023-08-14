@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './entities/user.entity';
-import { Response } from 'express';
+import { Response} from 'express';
 
 
 @Controller('user')
@@ -24,14 +24,19 @@ export class UserController {
     return response.status(HttpStatus.OK).send(this.userService.create(user));
   }
 
+  @Post('authenticate')
+  async verifyLogin(@Body() user: User, @Res() response:Response){
+    console.log('chegou aquio no controler bastantxi',user);
+    const result = await this.userService.verifyLogin(user);
+    
+    console.log(result);
+    return response.status(HttpStatus.OK).send(result);
+  }
+
+
   @Get()
   findAll() {
     return this.userService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id);
   }
 
   @Patch(':id')

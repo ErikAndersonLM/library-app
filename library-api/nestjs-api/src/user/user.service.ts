@@ -7,8 +7,17 @@ import { User } from './entities/user.entity';
 export class UserService {
   constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache) {}
   create(user:User) {
-    this.cacheManager.set("user-".concat(uuidv4()), user);
+    this.cacheManager.set((user.email), user);
     return {success: true, message: "Usuário created with succesfully."};
+  }
+
+  async verifyLogin(user:User) {
+    const result:User = await this.cacheManager.get(user.email);
+    if(result){
+      const resultPassword = result.password === user.password;
+      return {success: resultPassword, message: resultPassword ? "Usuário logado" : "Senha incorreta."};
+    }
+    return {success: false, message: "Usuário não existe"};
   }
 
   findAll() {

@@ -2,6 +2,7 @@
 import { map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 /** SERVICES */
 import { UtilService } from './util.service';
@@ -16,6 +17,9 @@ export class UserService {
     private http: HttpClient
   ) {
   }
+
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  isLoggedIn = this.isLoggedInSubject.asObservable();
 
   createUser(user: User) {
     console.log(user);
@@ -35,6 +39,31 @@ export class UserService {
           reject(err);
         });
     });
+  }
+
+  verifyUser(user: User){
+    return new Promise((resolve, reject) => {
+      const query = UtilService.API_BASE_URL + '/user/authenticate';
+      this.http.post(
+        query,
+        user
+      )
+        .pipe(
+          map((res: any) => {
+            return res;
+          })
+        ).subscribe(dataUser => {
+          this.isLoggedInSubject.next(dataUser.success);
+          resolve(dataUser);
+        }, err => {
+          reject(err);
+        });
+    });
+  }
+
+  logout(){
+    this.isLoggedInSubject.next(false);
+    window.location.replace('/login');
   }
 
 }
