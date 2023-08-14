@@ -14,10 +14,11 @@ export class BookService {
     return {success: true, message: "Livro criado com sucesso"};
   }
 
-  findAll() {
-    console.log("chegou aq");
-    const result = this.cacheManager.get("book-all");
-    return result;
+  async findAll() {
+    const allKeys:string[] = await this.cacheManager.store.keys() as string[];
+    const booksKeys = await allKeys.filter(item => item.includes("book"));
+    const booksInformations = await Promise.all(booksKeys.map(key => this.cacheManager.get(key)));
+    return booksInformations;
   }
 
   findOne(id: string) {
