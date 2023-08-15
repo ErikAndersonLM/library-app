@@ -1,0 +1,9 @@
+.book-table {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 2%;
+}
+
+.main-book-table {
+    margin-bottom: 2%;
+}

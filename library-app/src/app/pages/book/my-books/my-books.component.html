@@ -1,6 +1,6 @@
 <div class="container-fluid p-4">
-    <div class="row">
-        <div class="table-responsive col-md-12">
+    <div class="row justify-content-center">
+        <div class="table-responsive col-md-12 main-book-table book-table">
             <div class="table-title text-center">
                 <h3>Livros</h3>
             </div>
@@ -34,58 +34,58 @@
             </table>
         </div>
 
-        <hr>
-
-        <div class="table-responsive col-md-6">
-            <div class="table-title text-center">
-                <h3>Livros Lidos</h3>
+        <div class="row gap-3 col-12 justify-content-center">
+            <div class="table-responsive col-md-5 book-table">
+                <div class="table-title text-center">
+                    <h3>Livros Lidos</h3>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Autor</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Ano</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let book of readedFilteredList; let i = index">
+                            <td>{{i+1}}</td>
+                            <th>{{book.title}}</th>
+                            <td>{{book.author}}</td>
+                            <td>{{book.gender}}</td>
+                            <td>{{book.release_year}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Autor</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Ano</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let book of readedFilteredList; let i = index">
-                        <td>{{i+1}}</td>
-                        <th>{{book.title}}</th>
-                        <td>{{book.author}}</td>
-                        <td>{{book.gender}}</td>
-                        <td>{{book.release_year}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 
-        <div class="table-responsive col-md-6">
-            <div class="table-title text-center">
-                <h3>Livros Salvos</h3>
+            <div class="table-responsive col-md-5 book-table">
+                <div class="table-title text-center">
+                    <h3>Livros Salvos</h3>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Autor</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Ano</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let book of savedFilteredList; let i = index">
+                            <td>{{i+1}}</td>
+                            <th>{{book.title}}</th>
+                            <td>{{book.author}}</td>
+                            <td>{{book.gender}}</td>
+                            <td>{{book.release_year}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Autor</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Ano</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let book of savedFilteredList; let i = index">
-                        <td>{{i+1}}</td>
-                        <th>{{book.title}}</th>
-                        <td>{{book.author}}</td>
-                        <td>{{book.gender}}</td>
-                        <td>{{book.release_year}}</td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </div>
 </div>
