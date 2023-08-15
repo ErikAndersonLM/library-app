@@ -4,6 +4,7 @@ import { Book } from 'src/app/model/book';
 import { BookService } from 'src/app/services/book.service';
 import { Author } from 'src/app/model/author';
 import { AuthorService } from 'src/app/services/author.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-book',
@@ -15,7 +16,8 @@ export class RegisterBookComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private bookService: BookService,
-    private authorService: AuthorService
+    private authorService: AuthorService,
+    private router: Router
   ) { }
 
   formBookRegister!: FormGroup;
@@ -53,6 +55,7 @@ export class RegisterBookComponent implements OnInit {
     const response:any = await this.bookService.createBook(book);
     if(response.success){
       alert("Livro cadastrado com sucesso!");
+      this.router.navigate(['/my-books'])
     }
   
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { Author } from 'src/app/model/author';
 import { AuthorService } from 'src/app/services/author.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-author',
@@ -12,7 +13,8 @@ export class RegisterAuthorComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authorService: AuthorService
+    private authorService: AuthorService,
+    private router: Router
   ) { }
 
   formAuthorRegister!: FormGroup;
@@ -35,6 +37,7 @@ export class RegisterAuthorComponent implements OnInit {
     const response:any = await this.authorService.createAuthor(author);
     if(response.success){
       alert("Autor cadastrado com sucesso!");
+      this.router.navigate(['/my-books'])
     }
   
   }
