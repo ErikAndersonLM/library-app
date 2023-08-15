@@ -29,7 +29,6 @@ export class BookController {
 
   @Post('saved/remove')
   async removeSavedBook(@Body() book: Book, @Res() response: Response) {
-    console.log("chegou", book);
     await this.bookService.removeSavedBook(book);
     return response.status(HttpStatus.OK).send({success: 'OK!'});
   }
@@ -37,6 +36,22 @@ export class BookController {
   @Get('saved')
   findSavedBooks(){
     return this.bookService.getSavedBooks();
+  }
+
+  @Post('readed')
+  readedBook(@Body() book: Book, @Res() response: Response) {
+    return response.status(HttpStatus.OK).send(this.bookService.registerReadedBook(book));
+  }
+
+  @Post('readed/remove')
+  async removeReadedBook(@Body() book: Book, @Res() response: Response) {
+    await this.bookService.removeReadedBook(book);
+    return response.status(HttpStatus.OK).send({success: 'OK!'});
+  }
+
+  @Get('readed')
+  findReadedBooks(){
+    return this.bookService.getReadedBooks();
   }
 
   @Get()

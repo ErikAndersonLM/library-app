@@ -110,4 +110,60 @@ export class BookService {
     });
   }
 
+  registerReadedBook(book: Book){
+    return new Promise((resolve, reject) => {
+      const query = UtilService.API_BASE_URL + '/book/readed';
+      this.http.post(
+        query,
+        book
+      )
+        .pipe(
+          map((res: any) => {
+            return res;
+          })
+        ).subscribe(dataBook => {
+          resolve(dataBook);
+        }, err => {
+          reject(err);
+        });
+    });
+  }
+
+  removeReadedBook(book: Book){
+    return new Promise((resolve, reject) => {
+      const query = UtilService.API_BASE_URL + '/book/readed/remove';
+      this.http.post(
+        query,
+        book
+      )
+        .pipe(
+          map((res: any) => {
+            return res;
+          })
+        ).subscribe(dataBook => {
+          resolve(dataBook);
+        }, err => {
+          reject(err);
+        });
+    });
+  }
+
+  getReadedBooks() {
+    return new Promise((resolve, reject) => {
+      const query = UtilService.API_BASE_URL + '/book/readed';
+      this.http.get(
+        query
+      )
+        .pipe(
+          map((res: any) => {
+            return res;
+          })
+        ).subscribe(books => {
+          resolve(books);
+        }, err => {
+          reject(err);
+        });
+    });
+  }
+
 }

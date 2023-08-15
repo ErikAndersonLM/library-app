@@ -16,7 +16,7 @@
                 </thead>
                 <tbody>
                     <tr class="text-center" *ngFor="let book of list; let i = index">
-                        <th scope="row">{{i+1}}</th>
+                        <th>{{i+1}}</th>
                         <td>{{book.title}}</td>
                         <td>
                             <button type="button" class="btn" (click)="showModal(book)">
