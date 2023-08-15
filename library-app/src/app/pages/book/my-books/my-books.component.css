@@ -7,3 +7,15 @@
 .main-book-table {
     margin-bottom: 2%;
 }
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, .5);
+}
+
+dialog {
+    border: none;
+    border-radius: .5rem;
+    box-shadow: 0 0 1em rgba(0, 0, 0, .2);
+    width: 80%;
+    margin: auto;
+}

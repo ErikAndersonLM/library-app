@@ -9,13 +9,16 @@ import { Book } from 'src/app/model/book';
 })
 export class MyBooksComponent implements OnInit {
 
+  selectedBook: any;
+
   constructor(private bookService: BookService) { }
   
   public list: Book[] = [];
   public readedFilteredList:Book[] = [];
   public savedFilteredList: Book[] = [];
 
-  ngOnInit(): void {
+  ngOnInit(): void {   
+
     this.bookService.getAllBooks().then(result => {
         this.list = result as Book[];
     }).catch(e => {
@@ -23,6 +26,22 @@ export class MyBooksComponent implements OnInit {
     });
 
     this.getBooksSaved();
+  }
+
+  showModal(book: any) {
+    this.selectedBook = book;
+    const modal = document.querySelector("dialog");
+    if(modal){
+      modal.showModal();
+    }
+  }
+
+    closeModal(){
+      this.selectedBook = null;
+      const modal = document.querySelector("dialog");
+        if(modal){
+          modal.close()
+        }
   }
 
   async bookSaved(book: Book, event:any){
