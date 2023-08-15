@@ -22,6 +22,23 @@ export class BookController {
     return response.status(HttpStatus.OK).send(this.bookService.create(book));
   }
 
+  @Post('saved')
+  savedBook(@Body() book: Book, @Res() response: Response) {
+    return response.status(HttpStatus.OK).send(this.bookService.savedBook(book));
+  }
+
+  @Post('saved/remove')
+  async removeSavedBook(@Body() book: Book, @Res() response: Response) {
+    console.log("chegou", book);
+    await this.bookService.removeSavedBook(book);
+    return response.status(HttpStatus.OK).send({success: 'OK!'});
+  }
+
+  @Get('saved')
+  findSavedBooks(){
+    return this.bookService.getSavedBooks();
+  }
+
   @Get()
   findAll() {
     return this.bookService.findAll();

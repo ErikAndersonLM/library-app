@@ -21,6 +21,32 @@ export class BookService {
     return booksInformations;
   }
 
+  async savedBook(book: Book){
+    let books: Book[] = [];
+    const resultCache = await this.cacheManager.get('livros-salvos');
+    if (resultCache) {
+     books = resultCache as Book[];
+    }
+    books.push(book);
+    this.cacheManager.set('livros-salvos', books);
+  }
+
+  async removeSavedBook(book: Book){
+    let books = await this.cacheManager.get('livros-salvos') as Book[];
+    if (books) {
+     console.log("books previous -> ", books);
+     books = books.filter(item => item !== book);
+     console.log("books filtered -> ", books);
+     this.cacheManager.set('livros-salvos', books);
+    }
+    
+  }
+
+  getSavedBooks(){
+    const getAllBooks = this.cacheManager.get('livros-salvos');
+    return getAllBooks ? getAllBooks: [];
+  }
+
   findOne(id: string) {
     const resultCache = this.cacheManager.get(id);
     if(resultCache) {

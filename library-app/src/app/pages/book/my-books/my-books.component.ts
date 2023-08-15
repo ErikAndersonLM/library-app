@@ -20,20 +20,30 @@ export class MyBooksComponent implements OnInit {
         this.list = result as Book[];
     }).catch(e => {
       console.error(e);
-    }) 
+    });
+
+    this.getBooksSaved();
   }
 
-  bookSaved(book: Book, event:any){
+  async bookSaved(book: Book, event:any){
+    
     const checked: boolean = event.srcElement.checked;
     if(checked) {
-      this.savedFilteredList.push(book);
+      await this.bookService.registerSavedBook(book);
     } else {
-      this.savedFilteredList = this.savedFilteredList.filter(item => item !== book);
+      await this.bookService.removeSavedBook(book);
     }
+    await this.getBooksSaved();
+  }
+
+  async getBooksSaved(){
+    const savedBooks = await this.bookService.getSavedBooks();
+    this.savedFilteredList = savedBooks as Book[];
   }
 
   bookReaded(book: Book, event:any){
     const checked: boolean = event.srcElement.checked;
+
     if(checked) {
       this.readedFilteredList.push(book);
     } else {
