@@ -44,7 +44,16 @@ Uma aplicação que representa um sistema de gerenciamento de um biblioteca, ond
 
 ### Método I: Execução de Scripts
 1. Após a instalação do Angular CLI v14.0.7 e do Node v16.16.0 navegue até /library-app e execute o script "start.sh". O script será responsável por instalar as dependências do projeto e inicializar a aplicação Angular.
-2. Com o Docker rodando na sua máquina navegue até /library-api e execute o script "start-api.sh". O script será responsável por realizar o download da imagem do Redis em sua máquina, instalar as depedências do projeto e inicializar a API.
+
+```bash
+./start.sh
+```
+   
+3. Com o Docker rodando na sua máquina navegue até /library-api e execute o script "start-api.sh". O script será responsável por realizar o download da imagem do Redis em sua máquina, instalar as depedências do projeto e inicializar a API.
+
+```bash
+./start-api.sh
+```
 
 ### Método II: Manual
 1. Após a instalação do Angular CLI v14.0.7 e do Node v16.16.0 navegue até /libray-app, na raiz onde encontra-se o package.json, e execute os comandos abaixo:
