@@ -24,8 +24,17 @@ Uma aplicação que representa um sistema de gerenciamento de um biblioteca, ond
 ## Como iniciar a aplicação?
 
 ### Método I: Execução de Scripts
-1. Após a instalação do Node Angular CLI: 14.0.7 navegue até /library-app e execute o script "start.sh". O script será responsável por instalar as dependências do projeto e inicializar a aplicação Angular.
-2. Com o Docker rodando na sua máquina navegue até /library-api e execute o script "start-api.sh". O script será responsável por realizar o download da imagem do Redis em sua máquina, instalar as depedências do projeto e inicializar a API. 
+1. Após a instalação do Angular CLI v14.0.7 e do Node v16.16.0 navegue até /library-app e execute o script "start.sh". O script será responsável por instalar as dependências do projeto e inicializar a aplicação Angular.
+2. Com o Docker rodando na sua máquina navegue até /library-api e execute o script "start-api.sh". O script será responsável por realizar o download da imagem do Redis em sua máquina, instalar as depedências do projeto e inicializar a API.
+
+### Método II: Manual
+1. Após a instalação do Angular CLI v14.0.7 e do Node v16.16.0 navegue até /libray-app, na raiz onde encontra-se o package.json, e execute os comandos abaixo:
+   - npm install
+   - ng serve
+2. Após a instalação do Node v16.16.0 navegue até /library-api/nestjs-api e execute os comandos abaixo:
+   - npm install
+   - docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest #Baixando imagem do Redis no Docker
+   - npm run start:dev
 ```bash
 
 
