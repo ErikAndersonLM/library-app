@@ -35,10 +35,7 @@ Uma aplicação que representa um sistema de gerenciamento de um biblioteca, ond
    - npm install
    - docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest #Baixando imagem do Redis no Docker
    - npm run start:dev
-```bash
 
-
-```
 # Tecnologias utilizadas
 1. [Angular](https://angular.io/)
 2. [NestJS](https://nestjs.com/)
@@ -48,4 +45,3 @@ Uma aplicação que representa um sistema de gerenciamento de um biblioteca, ond
 6. [Docker](https://www.docker.com/)
 # Autor
 - [Erik Anderson](https://www.linkedin.com/in/erik-de-morais-740a44234/)
-# Próximos passos
