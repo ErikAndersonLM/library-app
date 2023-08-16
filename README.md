@@ -29,13 +29,23 @@ Uma aplicação que representa um sistema de gerenciamento de um biblioteca, ond
 
 ### Método II: Manual
 1. Após a instalação do Angular CLI v14.0.7 e do Node v16.16.0 navegue até /libray-app, na raiz onde encontra-se o package.json, e execute os comandos abaixo:
-   - npm install
-   - ng serve
+```bash
+npm install
+```
+```bash
+ng serve
+```
 2. Após a instalação do Node v16.16.0 navegue até /library-api/nestjs-api e execute os comandos abaixo:
-   - npm install
-   - docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest #Baixando imagem do Redis no Docker
-   - npm run start:dev
-
+```bash
+npm install
+```
+Baixando imagem do Redis no Docker
+```bash
+docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest 
+```
+```bash
+npm run start:dev
+```
 # Tecnologias utilizadas
 1. [Angular](https://angular.io/)
 2. [NestJS](https://nestjs.com/)
