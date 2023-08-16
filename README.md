@@ -11,41 +11,23 @@ Uma aplicação que representa um sistema de gerenciamento de um biblioteca, ond
 - [x] Cadastro de Livro;
 - [x] Cadastro de Autor;
 - [x] Listagem de livros;
-- [x] Manutenção de livros lidos e salvos.
+- [x] Manutenção de livros lidos e salvos por usuário.
 ## Layout
 - Colocar as telas aqui quando finalizar.
 ## Versões
 ```bash
-# NodeJS
-$ nvm install 16.16.0
-
-- Caso tenha mais de uma versão NodeJS em sua máquina, use
-$ nvm ude 16.16.0
-
-# Angular CLI
-$ npm install -g @angular/cli@14.0.7 
+# NodeJS 16.16.0
+# Angular CLI: 14.0.7
+# Package Manager: npm 8.11.0
+# Redis: latest
 ```
-## Como rodar este projeto?
+## Como iniciar a aplicação?
+
+### Método I: Execução de Scripts
+1. Após a instalação do Node Angular CLI: 14.0.7 navegue até /library-app e execute o script "start.sh". O script será responsável por instalar as dependências do projeto e inicializar a aplicação Angular.
+2. Com o Docker rodando na sua máquina navegue até /library-api e execute o script "start-api.sh". O script será responsável por realizar o download da imagem do Redis em sua máquina, instalar as depedências do projeto e inicializar a API. 
 ```bash
-# Clone este repositório
-$ git clone linkrepo
 
-# Acesse a pasta do projeto do seu terminal
-- Para o front-end
-$ cd library-app
-
-- Para a API
-$ cd library-api/nestjs-api
-
-# Instale as dependências em ambos projetos
-$ npm install
-
-# Execute a aplicação
-- Para o front-end
-$ ng serve
-
-- Para a API
-$ npm run start:dev
 
 ```
 # Tecnologias utilizadas
