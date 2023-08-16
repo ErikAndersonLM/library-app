@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../../services/book.service';
 import { Book } from 'src/app/model/book';
 import { UserService } from 'src/app/services/user.service';
-import * as loadsh from 'lodash';
+
 @Component({
   selector: 'app-my-books',
   templateUrl: './my-books.component.html',
