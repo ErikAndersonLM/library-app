@@ -1,10 +1,6 @@
 # Library App
 # Sobre o projeto
 Uma aplicação que representa um sistema de gerenciamento de um biblioteca, onde atende a criação e manutenção de livros, autores e usuários, contando com o desenvolvimento em formato fullstack com o intuito de contemplar todas as ações da aplicação.
-## Indice
-- <a href="#rodar">Como rodar este projeto?</a>
-- <a href="#tecnologias">Tecnologias utilizadas</a>
-- <a href="#autor">Autor</a>
 ## Funcionalidades
 - [x] Cadastro de usuário;
 - [x] Login e Logout;
@@ -13,7 +9,30 @@ Uma aplicação que representa um sistema de gerenciamento de um biblioteca, ond
 - [x] Listagem de livros;
 - [x] Manutenção de livros lidos e salvos por usuário.
 ## Layout
-- Colocar as telas aqui quando finalizar.
+- Página de Login
+
+<img src="library-app/src/assets/images/loginScreen.png" alt="Printscreen da página de login da aplicação">
+
+- Cadastro de Usuário
+
+<img src="library-app/src/assets/images/userRegister.png" alt="Printscreen da página de cadastro de usuário da aplicação">
+
+- Meus Livros
+
+<img src="library-app/src/assets/images/myBooksScreen.png" alt="Printscreen da página de meus livros da aplicação">
+
+- Cadastrar um Autor
+
+<img src="library-app/src/assets/images/authorRegister.png" alt="Printscreen da página de cadastrar uma autor da aplicação">
+
+- Cadastrar um Livro
+
+<img src="library-app/src/assets/images/bookRegister.png" alt="Printscreen da página de cadastrar um livro da aplicação">
+
+- Detalhes do Livro
+
+<img src="library-app/src/assets/images/myBookDetails.png" alt="Printscreen da página de detalhes de um livro da aplicação">
+
 ## Versões
 ```bash
 # NodeJS 16.16.0
