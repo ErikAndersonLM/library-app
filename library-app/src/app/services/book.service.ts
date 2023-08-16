@@ -92,9 +92,9 @@ export class BookService {
     });
   }
 
-  getSavedBooks() {
+  getSavedBooks(userEmail: string) {
     return new Promise((resolve, reject) => {
-      const query = UtilService.API_BASE_URL + '/book/saved';
+      const query = UtilService.API_BASE_URL + '/book/saved/' + userEmail;
       this.http.get(
         query
       )
@@ -148,9 +148,9 @@ export class BookService {
     });
   }
 
-  getReadedBooks() {
+  getReadedBooks(userEmail: string) {
     return new Promise((resolve, reject) => {
-      const query = UtilService.API_BASE_URL + '/book/readed';
+      const query = UtilService.API_BASE_URL + '/book/readed/' + userEmail;
       this.http.get(
         query
       )

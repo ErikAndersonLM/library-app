@@ -2,7 +2,6 @@ import { Injectable, Inject, CACHE_MANAGER } from '@nestjs/common';
 import { Cache } from 'cache-manager';
 import { v4 as uuidv4 } from 'uuid';
 import { Book } from 'src/book/entities/book.entity';
-import * as deepEqual from 'deep-equal';
 
 @Injectable()
 
@@ -10,7 +9,8 @@ export class BookService {
   constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache) { }
 
   create(book: Book) {
-    this.cacheManager.set("book-".concat(uuidv4()), book);
+    book.id = uuidv4();
+    this.cacheManager.set("book-".concat(book.id), book);
     return { success: true, message: "Livro criado com sucesso" };
   }
 
@@ -21,66 +21,53 @@ export class BookService {
     return booksInformations;
   }
 
-  async savedBook(book: Book) {
-    let books: Book[] = [];
-    const resultCache = await this.cacheManager.get('saved-books');
-    if (resultCache) {
-      books = resultCache as Book[];
-    }
-    books.push(book);
-    this.cacheManager.set('saved-books', books);
-  }
-
-  async removeSavedBook(book: Book) {
-    let books = await this.cacheManager.get('saved-books') as Book[];
-    if (books) {
-      const booksFiltered = books.filter(item => !deepEqual(book, item));
-      this.cacheManager.set('saved-books', booksFiltered);
-    }
-
-  }
-
-  getSavedBooks() {
-    const getAllBooks = this.cacheManager.get('saved-books');
-    return getAllBooks ? getAllBooks : [];
-  }
+  /** READED FLOW */
 
   async registerReadedBook(book: Book) {
     let books: Book[] = [];
-    const resultCache = await this.cacheManager.get('readed-books');
+    const resultCache = await this.cacheManager.get(book.userEmail.concat('-readed-books'));
     if (resultCache) {
       books = resultCache as Book[];
     }
     books.push(book);
-    this.cacheManager.set('readed-books', books);
+    this.cacheManager.set(book.userEmail.concat('-readed-books'), books);
   }
 
   async removeReadedBook(book: Book) {
-    let books = await this.cacheManager.get('readed-books') as Book[];
+    let books = await this.cacheManager.get(book.userEmail.concat('-readed-books')) as Book[];
     if (books) {
-      const booksFiltered = books.filter(item => !deepEqual(book, item));
-      this.cacheManager.set('readed-books', booksFiltered);
+      const booksFiltered = books.filter(item => item.id !== book.id);
+      this.cacheManager.set(book.userEmail.concat('-readed-books'), booksFiltered);
     }
   }
 
-  getReadedBooks() {
-    const getAllBooks = this.cacheManager.get('readed-books');
+  getReadedBooksByUser(emailUser: string) {
+    const getAllBooks = this.cacheManager.get(emailUser.concat('-readed-books'));
     return getAllBooks ? getAllBooks : [];
   }
 
-  findOne(id: string) {
-    const resultCache = this.cacheManager.get(id);
+  /** SAVED FLOW */
+
+  async registerSavedBook(book: Book) {
+    let books: Book[] = [];
+    const resultCache = await this.cacheManager.get(book.userEmail.concat('-saved-books'));
     if (resultCache) {
-      return resultCache;
+      books = resultCache as Book[];
     }
-    return `This book key not exist on Redis.`;
+    books.push(book);
+    this.cacheManager.set(book.userEmail.concat('-saved-books'), books);
   }
 
-  update(id: number) {
-    return `This action updates a #${id} book`;
+  async removeSavedBook(book: Book) {
+    let books = await this.cacheManager.get(book.userEmail.concat('-saved-books')) as Book[];
+    if (books) {
+      const booksFiltered = books.filter(item => item.id !== book.id);
+      this.cacheManager.set(book.userEmail.concat('-saved-books'), booksFiltered);
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} book`;
+  getSavedBooksByUser(emailUser:string ) {
+    const getAllBooks = this.cacheManager.get(emailUser.concat('-saved-books'));
+    return getAllBooks ? getAllBooks : [];
   }
 }

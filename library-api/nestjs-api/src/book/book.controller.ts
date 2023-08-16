@@ -22,9 +22,16 @@ export class BookController {
     return response.status(HttpStatus.OK).send(this.bookService.create(book));
   }
 
+
+  @Get()
+  findAll() {
+    return this.bookService.findAll();
+  }
+
+  /** SAVED FLOW */
   @Post('saved')
   savedBook(@Body() book: Book, @Res() response: Response) {
-    return response.status(HttpStatus.OK).send(this.bookService.savedBook(book));
+    return response.status(HttpStatus.OK).send(this.bookService.registerSavedBook(book));
   }
 
   @Post('saved/remove')
@@ -33,11 +40,12 @@ export class BookController {
     return response.status(HttpStatus.OK).send({success: 'OK!'});
   }
 
-  @Get('saved')
-  findSavedBooks(){
-    return this.bookService.getSavedBooks();
+  @Get('saved/:userEmail')
+  findSavedBooksByUser(@Param('userEmail') userEmail: string){
+    return this.bookService.getSavedBooksByUser(userEmail);
   }
 
+  /** READED FLOW */
   @Post('readed')
   readedBook(@Body() book: Book, @Res() response: Response) {
     return response.status(HttpStatus.OK).send(this.bookService.registerReadedBook(book));
@@ -49,28 +57,8 @@ export class BookController {
     return response.status(HttpStatus.OK).send({success: 'OK!'});
   }
 
-  @Get('readed')
-  findReadedBooks(){
-    return this.bookService.getReadedBooks();
-  }
-
-  @Get()
-  findAll() {
-    return this.bookService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.bookService.findOne(id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string) {
-    return this.bookService.update(+id);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.bookService.remove(+id);
+  @Get('readed/:userEmail')
+  findReadedBooksByUser(@Param('userEmail') userEmail: string){
+    return this.bookService.getReadedBooksByUser(userEmail);
   }
 }

@@ -15,7 +15,7 @@ export class UserService {
     const result:User = await this.cacheManager.get(user.email);
     if(result){
       const resultPassword = result.password === user.password;
-      return {success: resultPassword, message: resultPassword ? "Usuário logado" : "Senha incorreta."};
+      return {success: resultPassword, message: resultPassword ? "Usuário logado" : "Senha incorreta.", emailUser: user.email};
     }
     return {success: false, message: "Usuário não existe"};
   }

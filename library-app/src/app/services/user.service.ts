@@ -20,6 +20,7 @@ export class UserService {
 
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   isLoggedIn = this.isLoggedInSubject.asObservable();
+  emailUserLogin: string = "";
 
   createUser(user: User) {
     return new Promise((resolve, reject) => {
@@ -53,6 +54,7 @@ export class UserService {
           })
         ).subscribe(dataUser => {
           this.isLoggedInSubject.next(dataUser.success);
+          this.emailUserLogin = dataUser.emailUser;
           resolve(dataUser);
         }, err => {
           reject(err);
